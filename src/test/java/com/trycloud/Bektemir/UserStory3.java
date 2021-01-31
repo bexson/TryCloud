@@ -54,6 +54,19 @@ public class UserStory3 extends TestBase {
     public void tc_1(){
         login();
     }
+    @Test
+    public void tc_2(){
+        login();
+        pre_condition_for_TC2();
+        WebDriverFactory.sleep(5);
+        driver.findElement(By.xpath("(//table)//th//label[@for='select_all_files']")).click();//checkbox
+        List<WebElement> checkBoxes = driver.findElements(By.className("selectCheckBox checkbox"));
+        for (WebElement each : checkBoxes) {
+            Assert.assertTrue(each.isSelected());
+        }
+    }
+
+
 
 
     }
