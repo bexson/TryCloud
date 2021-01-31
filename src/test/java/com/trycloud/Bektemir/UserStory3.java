@@ -67,6 +67,16 @@ public class UserStory3 extends TestBase {
     }
 
 
+    @Test
+    public void tc_3(){
+        login();
+        driver.findElement(By.xpath("(//span[@class='icon icon-more'])[3]")).click();
+        driver.findElement(By.xpath("(//span[.='Add to favorites'])")).click();
+        driver.findElement(By.xpath("//a[.='Favorites']")).click();
+        boolean isListed = driver.findElement(By.xpath("(//table)[3]//tbody//tr[@data-file='Java']")).isDisplayed();
+
+        Assert.assertTrue(isListed);
+    }
 
 
     }
