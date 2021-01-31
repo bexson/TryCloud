@@ -1,15 +1,20 @@
 package com.trycloud.tests.base;
 
+import com.github.javafaker.Faker;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
     public abstract class TestBase {
         //This class created for re-usability of methods
+
+        protected Faker faker = new Faker();
 
         //               Data for TryCloud WebSite :
         //It will take all data from configuration.properties using ConfigurationReader class
@@ -23,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
         protected static WebDriver driver;
 
-        @BeforeClass // this will run 1 time only before class
+        @BeforeMethod // this will run 1 time only before class
         //setUp chrome driver
         public void setupClass(){
             driver = WebDriverFactory.getDriver(ConfigurationReader.getProperty("browser"));
@@ -32,7 +37,7 @@ import java.util.concurrent.TimeUnit;
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         }
 
-        @AfterClass // this will run 1 time only after class
+//        @AfterMethod // this will run 1 time only after class
         public void closeClass(){
             driver.close();
         }
