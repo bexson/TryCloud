@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class UserStory3 extends TestBase {
-    //As a user, I should be able to access to Files module.
+    //TODO: As a user, I should be able to access to Files module.
     @BeforeMethod
     public void getLoginPage(){
         driver.get(ConfigurationReader.getProperty("url"));
@@ -59,7 +59,9 @@ public class UserStory3 extends TestBase {
         login();
         pre_condition_for_TC2();
         WebDriverFactory.sleep(5);
-        driver.findElement(By.xpath("(//table)//th//label[@for='select_all_files']")).click();//checkbox
+        WebElement something = driver.findElement(By.xpath("(//table)//th//label[@for='select_all_files']"));
+//        driver.findElement(By.xpath("(//table)//th//label[@for='select_all_files']")).click();//checkbox
+        something.click();
         List<WebElement> checkBoxes = driver.findElements(By.className("selectCheckBox checkbox"));
         for (WebElement each : checkBoxes) {
             Assert.assertTrue(each.isSelected());
@@ -70,12 +72,18 @@ public class UserStory3 extends TestBase {
     @Test
     public void tc_3(){
         login();
-        driver.findElement(By.xpath("(//span[@class='icon icon-more'])[3]")).click();
+        WebElement actionButton = driver.findElement(By.xpath("(//span[@class='icon icon-more'])[3]"));
+        actionButton.click();
         driver.findElement(By.xpath("(//span[.='Add to favorites'])")).click();
         driver.findElement(By.xpath("//a[.='Favorites']")).click();
         boolean isListed = driver.findElement(By.xpath("(//table)[3]//tbody//tr[@data-file='Java']")).isDisplayed();
 
         Assert.assertTrue(isListed);
+    }
+
+    @Test
+    public void tc_4(){
+
     }
 
 
