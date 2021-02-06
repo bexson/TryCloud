@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.util.concurrent.TimeUnit;
-
     public abstract class TestBase {
         //This class created for re-usability of methods
 
@@ -28,8 +26,7 @@ import java.util.concurrent.TimeUnit;
         public void setupClass(){
             driver = WebDriverFactory.getDriver(ConfigurationReader.getProperty("browser"));
             assert driver != null; // it is just to get rid of warning
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+            WebDriverFactory.manageWebDriver(driver);
         }
 
         @AfterClass // this will run 1 time only after class
