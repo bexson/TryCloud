@@ -98,6 +98,16 @@ public class UserStory2 {
 
         //                  Locating Talk
         WebElement TalkButton = driver.findElement(By.cssSelector("a[aria-label='Talk']"));
+        TalkButton.click();
+
+        // Verifying actual vs expected results
+        String ExpectedResult_Talk = "http://qa3.trycloud.net/index.php/apps/spreed/";
+        String ActualResult_Talk = driver.getCurrentUrl();
+
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Talk, ActualResult_Talk,"Expected result is different from Actual result");
+        driver.navigate().back();
+        Thread.sleep(2000);
 
 
 
