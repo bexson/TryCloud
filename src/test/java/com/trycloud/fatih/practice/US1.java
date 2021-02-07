@@ -1,11 +1,11 @@
 package com.trycloud.fatih.practice;
 
-import com.trycloud.tests.base.TestBase;
+import com.trycloud.tests.base.TestBaseBC;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class US1 extends TestBase{
+public class US1 extends TestBaseBC {
 
     @Test
     public void loginValid(){

@@ -1,7 +1,7 @@
 package com.trycloud.Viktoriya;
 
 import com.github.javafaker.Faker;
-import com.trycloud.tests.base.TestBase;
+import com.trycloud.tests.base.TestBaseBC;
 import com.trycloud.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-public class UserStory7 extends TestBase {
+public class UserStory7 extends TestBaseBC {
    /*   #7 As a user, I should be able to access search
 any item/ users from the homepage*/
    WebDriver driver;

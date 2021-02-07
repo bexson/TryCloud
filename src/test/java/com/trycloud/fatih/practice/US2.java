@@ -1,6 +1,6 @@
 package com.trycloud.fatih.practice;
 
-import com.trycloud.tests.base.TestBase;
+import com.trycloud.tests.base.TestBaseBC;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class US2 extends TestBase {
+public class US2 extends TestBaseBC {
 
 
     @Test

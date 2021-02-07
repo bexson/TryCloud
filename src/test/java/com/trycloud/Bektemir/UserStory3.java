@@ -1,6 +1,6 @@
 package com.trycloud.Bektemir;
 
-import com.trycloud.tests.base.TestBase;
+import com.trycloud.tests.base.TestBaseBC;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class UserStory3 extends TestBase {
+public class UserStory3 extends TestBaseBC {
     //As a user, I should be able to access to Files module.
     @BeforeClass
     public void getLoginPage(){

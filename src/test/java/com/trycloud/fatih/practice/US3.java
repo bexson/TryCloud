@@ -1,6 +1,6 @@
 package com.trycloud.fatih.practice;
 
-import com.trycloud.tests.base.TestBase;
+import com.trycloud.tests.base.TestBaseBC;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class US3 extends TestBase {
+public class US3 extends TestBaseBC {
 
 
     @Test
@@ -43,8 +43,6 @@ public class US3 extends TestBase {
             }
         }
         Assert.assertTrue(flag);
-
-
     }
 
 
