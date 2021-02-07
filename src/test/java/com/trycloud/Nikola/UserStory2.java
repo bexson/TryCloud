@@ -139,7 +139,20 @@ public class UserStory2 {
         driver.navigate().back();
         Thread.sleep(2000);
 
+        //=============================================================================================================\
 
+        //                  Locating Circles
+        WebElement CirclesButton = driver.findElement(By.xpath("//a[@aria-label='Circles']"));
+        CirclesButton.click();
+
+        // Verifying actual vs expected results
+        String ExpectedResult_Circles = "http://qa3.trycloud.net/index.php/apps/circles/";
+        String ActualResult_Circles = driver.getCurrentUrl();
+
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Circles, ActualResult_Circles,"Expected result is different from Actual result");
+        driver.navigate().back();
+        Thread.sleep(2000);
 
 
 
