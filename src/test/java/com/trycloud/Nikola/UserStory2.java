@@ -154,9 +154,20 @@ public class UserStory2 {
         driver.navigate().back();
         Thread.sleep(2000);
 
+        //=============================================================================================================
 
+        //                  Locating Calendar
+        WebElement CalendarButton = driver.findElement(By.xpath("//a[@aria-label='Calendar']"));
+        CalendarButton.click();
 
+        // Verifying actual vs expected results
+        String ExpectedResult_Calendar = "http://qa3.trycloud.net/index.php/apps/calendar/dayGridMonth/now";
+        String ActualResult_Calendar = driver.getCurrentUrl();
 
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Calendar, ActualResult_Calendar,"Expected result is different from Actual result");
+        driver.navigate().back();
+        Thread.sleep(2000);
 
 
     }
