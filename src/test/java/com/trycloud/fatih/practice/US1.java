@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class US1 extends TestBase {
+public class US1 extends TestBase{
 
     @Test
     public void loginValid(){
