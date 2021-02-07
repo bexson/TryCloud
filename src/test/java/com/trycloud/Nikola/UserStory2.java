@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -169,8 +170,23 @@ public class UserStory2 {
         driver.navigate().back();
         Thread.sleep(2000);
 
+        //=============================================================================================================
+
+        //                  Locating Deck
+        WebElement DeckButton = driver.findElement(By.xpath("//a[@aria-label='Deck']"));
+        DeckButton.click();
+
+        // Verifying actual vs expected results
+        String ExpectedResult_Deck = "http://qa3.trycloud.net/index.php/apps/deck/#/";
+        String ActualResult_Deck = driver.getCurrentUrl();
+
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Deck, ActualResult_Deck,"Expected result is different from Actual result");
 
     }
 
-
+    @AfterClass
+    public void TearDownClass () {
+        driver.close();
+    }
 }
