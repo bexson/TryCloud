@@ -48,6 +48,7 @@ public class UserStory2 {
     public void LocatingModules () throws InterruptedException {
 
         //                  Locating files
+        Thread.sleep(5000);
         WebElement FilesButton = driver.findElement(By.cssSelector("a[aria-label='Files']"));
         FilesButton.click();
         Thread.sleep(1000);
@@ -58,6 +59,10 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Files, ActualResult_Files,"Expected result is different from Actual result");
+        Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
+        driver.navigate().back();
         Thread.sleep(2000);
 
         //==============================================================================================
@@ -75,6 +80,8 @@ public class UserStory2 {
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Photos, ActualResult_Photos,"Expected result is different from Actual result");
         Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
         //===================================================================================================
 
@@ -90,6 +97,8 @@ public class UserStory2 {
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Activity, ActualResult_Activity,"Expected result is different from Actual result");
         Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
         //=====================================================================================================
 
@@ -103,6 +112,8 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Talk, ActualResult_Talk,"Expected result is different from Actual result");
+        Thread.sleep(2000);
+        driver.navigate().back();
         Thread.sleep(2000);
 
         //========================================================================================================
@@ -118,6 +129,8 @@ public class UserStory2 {
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Mail, ActualResult_Mail,"Expected result is different from Actual result");
         Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
         //==========================================================================================================
 
@@ -131,6 +144,8 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Contacts, ActualResult_Contacts,"Expected result is different from Actual result");
+        Thread.sleep(2000);
+        driver.navigate().back();
         Thread.sleep(2000);
 
         //=============================================================================================================\
@@ -146,6 +161,8 @@ public class UserStory2 {
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Circles, ActualResult_Circles,"Expected result is different from Actual result");
         Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
         //=============================================================================================================
 
@@ -160,6 +177,8 @@ public class UserStory2 {
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Calendar, ActualResult_Calendar,"Expected result is different from Actual result");
         Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
         //=============================================================================================================
 
@@ -173,6 +192,8 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Deck, ActualResult_Deck,"Expected result is different from Actual result");
+        Thread.sleep(2000);
+        driver.navigate().back();
         Thread.sleep(2000);
     }
 
