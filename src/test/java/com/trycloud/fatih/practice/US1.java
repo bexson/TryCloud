@@ -13,7 +13,7 @@ public class US1 extends TestBase {
         driver.findElement(By.id("user")).sendKeys(username1);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("submit-form")).click();
-        Assert.assertEquals(driver.getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/files/?dir=/&fileid=3112");
+        Assert.assertEquals(driver.getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/dashboard/");
     }
 
     @Test
