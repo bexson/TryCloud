@@ -1,6 +1,7 @@
 package com.trycloud.tests.base;
 
 import com.github.javafaker.Faker;
+import com.trycloud.Bektemir.pages.LoginPagePOM;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +43,10 @@ import java.util.concurrent.TimeUnit;
             driver.close();
         }
 
+        public void login(){
+            LoginPagePOM loginPagePOM = new LoginPagePOM();
+            loginPagePOM.login();
+        }
 
 
 
