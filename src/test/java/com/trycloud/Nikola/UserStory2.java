@@ -109,6 +109,38 @@ public class UserStory2 {
         driver.navigate().back();
         Thread.sleep(2000);
 
+        //========================================================================================================
+
+        //                  Locating Mail
+        WebElement MailButton = driver.findElement(By.xpath("//a[@aria-label='Mail']"));
+        MailButton.click();
+
+        // Verifying actual vs expected results
+        String ExpectedResult_Mail = "http://qa3.trycloud.net/index.php/apps/mail/setup";
+        String ActualResult_Mail = driver.getCurrentUrl();
+
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Mail, ActualResult_Mail,"Expected result is different from Actual result");
+        driver.navigate().back();
+        Thread.sleep(2000);
+
+        //==========================================================================================================
+
+        //                 Locating Contacts
+        WebElement ContactsButton = driver.findElement(By.xpath("//a[@aria-label='Contacts']"));
+        ContactsButton.click();
+
+        // Verifying actual vs expected results
+        String ExpectedResult_Contacts = "http://qa3.trycloud.net/index.php/apps/contacts/All%20contacts";
+        String ActualResult_Contacts = driver.getCurrentUrl();
+
+        // Comparing actual and expected result
+        Assert.assertEquals(ExpectedResult_Contacts, ActualResult_Contacts,"Expected result is different from Actual result");
+        driver.navigate().back();
+        Thread.sleep(2000);
+
+
+
 
 
 
