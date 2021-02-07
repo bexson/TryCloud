@@ -58,9 +58,9 @@ public class UserStory2 {
         Assert.assertEquals(ExpectedResult_Files, ActualResult_Files,"Expected result is different from Actual result");
 
         //Navigating driver to the home page
-        WebElement HomeButton = driver.findElement(By.xpath("//div[@class='logo logo-icon']"));
-        HomeButton.click();
+        driver.navigate().back();
         Thread.sleep(2000);
+
 
         //==============================================================================================
 
@@ -75,7 +75,7 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Photos, ActualResult_Photos,"Expected result is different from Actual result");
-        HomeButton.click();
+        driver.navigate().back();
         Thread.sleep(2000);
 
         //===================================================================================================
@@ -91,8 +91,15 @@ public class UserStory2 {
 
         // Comparing actual and expected result
         Assert.assertEquals(ExpectedResult_Activity, ActualResult_Activity,"Expected result is different from Actual result");
-        HomeButton.click();
+        driver.navigate().back();
         Thread.sleep(2000);
+
+        //=====================================================================================================
+
+        //                  Locating Talk
+        WebElement TalkButton = driver.findElement(By.cssSelector("a[aria-label='Talk']"));
+
+
 
 
 
