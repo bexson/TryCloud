@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class US1 extends TestBase {
+public class US1 extends TestBase{
 
     @Test
     public void loginValid(){
@@ -13,7 +13,7 @@ public class US1 extends TestBase {
         driver.findElement(By.id("user")).sendKeys(username1);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("submit-form")).click();
-        Assert.assertEquals(driver.getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/files/?dir=/&fileid=3112");
+        Assert.assertEquals(driver.getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/dashboard/");
     }
 
     @Test
