@@ -101,6 +101,18 @@ public class userStory5 {
         //locating CONTACTS MODULE
         WebElement ContactsButton = driver.findElement(By.xpath("//a[@aria-label='Contacts']"));
         ContactsButton.click();
+
+        //locating +NEW CONTACT button
+       WebElement NewContactButton = driver.findElement(By.xpath("//button[@class='icon-add']"));
+       NewContactButton.click();
+
+       //locating TitleField
+        WebElement TitleField = driver.findElement(By.cssSelector("input[id='contact-title']"));
+        TitleField.sendKeys("Michael Scott");
+
+       //locating phone number field
+        WebElement PhoneNumberField = driver.findElement(By.className("property__value"));
+        PhoneNumberField.sendKeys("2677731164");
     }
 
 
