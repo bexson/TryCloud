@@ -101,18 +101,45 @@ public class userStory5 {
         //locating CONTACTS MODULE
         WebElement ContactsButton = driver.findElement(By.xpath("//a[@aria-label='Contacts']"));
         ContactsButton.click();
+        WebDriverFactory.sleep(2);
 
         //locating +NEW CONTACT button
        WebElement NewContactButton = driver.findElement(By.xpath("//button[@class='icon-add']"));
        NewContactButton.click();
+       WebDriverFactory.sleep(2);
+
+       //locating Company Field
+        WebElement CompanyField = driver.findElement(By.cssSelector("input[placeholder='Company']"));
+        CompanyField.sendKeys("Dunder Mifflin");
 
        //locating TitleField
         WebElement TitleField = driver.findElement(By.cssSelector("input[id='contact-title']"));
         TitleField.sendKeys("Michael Scott");
+        WebDriverFactory.sleep(2);
 
-       //locating phone number field
-        WebElement PhoneNumberField = driver.findElement(By.className("property__value"));
+       //locating PhoneNumber field
+        WebElement PhoneNumberField = driver.findElement(By.xpath("//input[@inputmode='tel']"));
         PhoneNumberField.sendKeys("2677731164");
+        WebDriverFactory.sleep(2);
+
+        //locating Email field
+        WebElement EmailField = driver.findElement(By.xpath("//input[@inputmode='email']"));
+        EmailField.sendKeys("michaelscott@gmail.com");
+        WebDriverFactory.sleep(2);
+
+        //locating PostOfficeBox field
+        WebElement POboxField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[2]/input"));
+        POboxField.sendKeys("23067S");
+        WebDriverFactory.sleep(2);
+
+        //locating Address field
+       WebElement AddressField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[3]/input");
+       AddressField.sendKeys("125 W Rodeo Ave");
+
+       //locating PostalCode field
+
+
+
     }
 
 
