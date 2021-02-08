@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class userStory5 {
-
-    /*5. Story: As a user, I should be able to access to Contacts module.
+/*5. Story: As a user, I should be able to access to Contacts module.
     Test case #1 - verify users can access to Talks module
 1. Login as a user
 2. Click “Contacts” module
@@ -112,6 +111,8 @@ public class userStory5 {
 
        //locating NewContact field
         WebElement NewContactField = driver.findElement(By.xpath("//input[@placeholder='Name']"));
+        NewContactButton.clear();
+        WebDriverFactory.sleep(2);
         NewContactField.sendKeys("Michael Scott");
         WebDriverFactory.sleep(2);
 
@@ -164,6 +165,11 @@ public class userStory5 {
         WebElement CountryField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[8]/input"));
         CountryField.sendKeys("USA");
         WebDriverFactory.sleep(2);
+
+        //===========================================================================================================//
+        //Verify the contact is added to contact list
+
+
 
     }
 
