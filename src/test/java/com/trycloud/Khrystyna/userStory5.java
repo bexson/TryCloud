@@ -133,7 +133,7 @@ public class userStory5 {
         WebDriverFactory.sleep(2);
 
         //locating Address field
-       WebElement AddressField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[3]/input");
+       WebElement AddressField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[3]/input"));
        AddressField.sendKeys("125 W Rodeo Ave");
 
        //locating PostalCode field
