@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class userStory5 {
@@ -107,14 +108,21 @@ public class userStory5 {
        WebElement NewContactButton = driver.findElement(By.xpath("//button[@class='icon-add']"));
        NewContactButton.click();
        WebDriverFactory.sleep(2);
+       // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+       //locating NewContact field
+        WebElement NewContactField = driver.findElement(By.xpath("//input[@placeholder='Name']"));
+        NewContactField.sendKeys("Michael Scott");
+        WebDriverFactory.sleep(2);
 
        //locating Company Field
         WebElement CompanyField = driver.findElement(By.cssSelector("input[placeholder='Company']"));
         CompanyField.sendKeys("Dunder Mifflin");
+        WebDriverFactory.sleep(2);
 
        //locating TitleField
         WebElement TitleField = driver.findElement(By.cssSelector("input[id='contact-title']"));
-        TitleField.sendKeys("Michael Scott");
+        TitleField.sendKeys("Branch Manager");
         WebDriverFactory.sleep(2);
 
        //locating PhoneNumber field
@@ -135,10 +143,27 @@ public class userStory5 {
         //locating Address field
        WebElement AddressField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[3]/input"));
        AddressField.sendKeys("125 W Rodeo Ave");
+        WebDriverFactory.sleep(2);
 
        //locating PostalCode field
+        WebElement PostalCodeField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[5]/input"));
+        PostalCodeField.sendKeys("08269");
+        WebDriverFactory.sleep(2);
 
+        //locating City field
+        WebElement CityField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[6]/input"));
+        CityField.sendKeys("Scranton");
+        WebDriverFactory.sleep(2);
 
+        //locating State field
+        WebElement StateField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[7]/input"));
+        StateField.sendKeys("Pennsylvania");
+        WebDriverFactory.sleep(2);
+
+        //locating Country field
+        WebElement CountryField = driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[8]/input"));
+        CountryField.sendKeys("USA");
+        WebDriverFactory.sleep(2);
 
     }
 
