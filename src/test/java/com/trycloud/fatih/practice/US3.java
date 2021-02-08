@@ -2,6 +2,7 @@ package com.trycloud.fatih.practice;
 
 import com.github.javafaker.Faker;
 import com.trycloud.tests.base.TestBaseBM;
+import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -18,7 +19,7 @@ public class US3 extends TestBaseBM {
     private String favoriteFileNameXpath = "//div[@id='app-content-favorites']//table[@id='filestable']/tbody//span[@class='innernametext']";
 
 
-
+//TODO: Do the tests as described in pdf
 
 
     @BeforeMethod
@@ -134,23 +135,38 @@ public class US3 extends TestBaseBM {
     }
 
 
+
     @Test
     public void uploadFileTC5(){
+        //Going to Files Module
+        driver.findElement(By.xpath(filesModule)).click();
+        driver.findElement(By.xpath("//a[@class='button new']")).click();
+        driver.findElement(By.xpath("//label[@for='file_upload_start']")).sendKeys("/Users/fatihalan/Desktop/FlipGrid4.txt");
+
+
+    }
+
+    @Test
+    public void createFolderTC6(){
         //Going to Files Module
         driver.findElement(By.xpath(filesModule)).click();
         //Creating Random File name
         Faker faker = new Faker();
         String fileName = faker.file().fileName().replaceAll("[^a-zA-Z0-9\\s]","");
+        WebDriverFactory.sleep(200);
 
         //Creating a new file with the random name
         driver.findElement(By.xpath("//a[@class='button new']")).click();
         driver.findElement(By.xpath("//a[@data-templatename='New folder']")).click();
         driver.findElement(By.id("view13-input-folder")).sendKeys(fileName);
         driver.findElement(By.xpath("//input[@class='icon-confirm']")).click();
-        
+
         //Assertion
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='app-content']//table[@id='filestable']//span[.='" + fileName + "']")).isDisplayed());
     }
+
+
+
 
 
 

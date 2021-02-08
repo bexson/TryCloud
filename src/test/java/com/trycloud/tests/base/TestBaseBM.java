@@ -18,19 +18,19 @@ public abstract class TestBaseBM {
     protected final String username4 = ConfigurationReader.getProperty("username4");
     protected final String password = ConfigurationReader.getProperty("password");
 
-
+//TODO login test should be added here to run before each test case
     protected static WebDriver driver;
 
     @BeforeMethod // this will run 1 time only before class
     //setUp chrome driver
-    public void setupClass(){
+    public void setupMethod(){
         driver = WebDriverFactory.getDriver(ConfigurationReader.getProperty("browser"));
         assert driver != null; // it is just to get rid of warning
         WebDriverFactory.manageWebDriver(driver);
     }
 
     @AfterMethod // this will run 1 time only after class
-    public void closeClass(){
+    public void closeMethod(){
         driver.close();
     }
 }
