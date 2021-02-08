@@ -5,6 +5,7 @@ import com.trycloud.Khrystyna.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,7 @@ public class userStory5 {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("http://qa3.trycloud.net");
-        SensitiveData sensitiveData = new SensitiveData();
+        sensitiveData = new SensitiveData();
 
     }
 
@@ -53,9 +54,53 @@ public class userStory5 {
         //locating logIn button
         WebElement loginButton = driver.findElement(By.xpath("//input[@type='submit']"));
         loginButton.click();
+        WebDriverFactory.sleep(3);
 
+        //----------------------------------------------------------------------------------------------------------//
 
+        //locating CONTACTS MODULE
+        WebElement ContactsButton = driver.findElement(By.xpath("//a[@aria-label='Contacts']"));
+        ContactsButton.click();
 
+        //getting and verifying page title
+        String expectedTitle = "Contacts - Trycloud QA";
+        String actualTitle = driver.getTitle();
+
+        Assert.assertEquals(expectedTitle,actualTitle);
+
+        WebDriverFactory.sleep(5);
+        //-----------------------------------------------------------------------------------------------------------//
+        //logOut
+        //locating logOut button
+        driver.findElement(By.xpath("//div[@id='expand']")).click();
+        driver.findElement(By.xpath("//*[@id=\"expanddiv\"]/ul/li[4]/a")).click();
+        WebDriverFactory.sleep(2);
+        //============================================================================================================//
+
+    }
+
+    @Test
+    public void test_case_2(){
+
+        //========================================================================================================//
+        //                                      log in
+        //locating logIn field
+        WebElement loginField = driver.findElement(By.xpath("//input[@id='user']"));
+        loginField.sendKeys(sensitiveData.getUserEmail());
+
+        //locating password field
+        WebElement passwordField = driver.findElement(By.cssSelector("input[id='password']"));
+        passwordField.sendKeys(sensitiveData.getUserPassword());
+
+        //locating logIn button
+        WebElement loginButton = driver.findElement(By.xpath("//input[@type='submit']"));
+        loginButton.click();
+
+        //----------------------------------------------------------------------------------------------------------//
+
+        //locating CONTACTS MODULE
+        WebElement ContactsButton = driver.findElement(By.xpath("//a[@aria-label='Contacts']"));
+        ContactsButton.click();
     }
 
 
