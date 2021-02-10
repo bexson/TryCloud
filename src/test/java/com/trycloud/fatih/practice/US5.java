@@ -1,8 +1,8 @@
 package com.trycloud.fatih.practice;
 
 import com.github.javafaker.Faker;
+import com.trycloud.fatih.utilities.U;
 import com.trycloud.tests.base.TestBaseBM;
-import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -14,6 +14,7 @@ import java.util.List;
 public class US5 extends TestBaseBM {
     private String contactsModuleXpath = "//a[@aria-label='Contacts']";
     private boolean represent = true;
+    private int time = 3;
 
     @BeforeMethod
     public void loginValid(){
@@ -42,10 +43,10 @@ public class US5 extends TestBaseBM {
         String contactName = faker.name().fullName();
         //Click talks module
         driver.findElement(By.xpath(contactsModuleXpath)).click();
-        representation(represent);
+        U.representation(represent,time);
         //Click new contact button
         driver.findElement(By.id("new-contact-button")).click();
-        representation(represent);
+        U.representation(represent,time);
 
 
         //Detect input boxes from the form and put fake values
@@ -53,43 +54,43 @@ public class US5 extends TestBaseBM {
         WebElement name = driver.findElement(By.id("contact-fullname"));
         name.clear(); //clear default text from contact title
         name.sendKeys(contactName);
-        representation(represent);
+        U.representation(represent,time);
         //Phone
         WebElement phone = driver.findElement(By.xpath("//input[@inputmode='tel']"));
         phone.sendKeys(faker.phoneNumber().cellPhone());
-        representation(represent);
+        U.representation(represent,time);
         //Email
         WebElement email = driver.findElement(By.xpath("//input[@inputmode='email']"));
         email.sendKeys(faker.internet().emailAddress());
-        representation(represent);
+        U.representation(represent,time);
         //Post office box
         WebElement postOfficeBox = driver.findElement(By.xpath("//div[@prop-name='adr']/div[2]/input"));
         postOfficeBox.sendKeys(faker.number().numberBetween(10,100) + "");
-        representation(represent);
+        U.representation(represent,time);
         //Adress
         WebElement adress = driver.findElement(By.xpath("//div[@prop-name='adr']/div[3]/input"));
         adress.sendKeys(faker.address().streetAddress());
-        representation(represent);
+        U.representation(represent,time);
         //Extended adress
         WebElement extendedAdress = driver.findElement(By.xpath("//div[@prop-name='adr']/div[4]/input"));
         extendedAdress.sendKeys(faker.address().fullAddress());
-        representation(represent);
+        U.representation(represent,time);
         //Postalcode
         WebElement postalCode = driver.findElement(By.xpath("//div[@prop-name='adr']/div[5]/input"));
         postalCode.sendKeys(faker.address().zipCodeByState("NJ"));
-        representation(represent);
+        U.representation(represent,time);
         //City
         WebElement city = driver.findElement(By.xpath("//div[@prop-name='adr']/div[6]/input"));
         city.sendKeys(faker.address().cityName());
-        representation(represent);
+        U.representation(represent,time);
         //State
         WebElement stateOrProvince = driver.findElement(By.xpath("//div[@prop-name='adr']/div[7]/input"));
         stateOrProvince.sendKeys(faker.address().state());
-        representation(represent);
+        U.representation(represent,time);
         //Country
         WebElement country = driver.findElement(By.xpath("//div[@prop-name='adr']/div[8]/input"));
         country.sendKeys("USA");
-        representation(represent);
+        U.representation(represent,time);
 
 
 
@@ -110,7 +111,7 @@ public class US5 extends TestBaseBM {
     public void allContactNamesTC3(){
         //TODO: Figure out what to assert in this test case
         driver.findElement(By.xpath(contactsModuleXpath)).click();
-        representation(represent);
+        U.representation(represent,time);
         List<WebElement> contactList = driver.findElements(By.xpath("//div[@class='app-content-list-item-line-one']"));
         for(WebElement element : contactList){
             System.out.println(element.getText());
@@ -131,9 +132,5 @@ public class US5 extends TestBaseBM {
 
 
 
-    private void representation(boolean represent){
-        if(represent) {
-            WebDriverFactory.sleep(50);
-        }
-    }
+   
 }
