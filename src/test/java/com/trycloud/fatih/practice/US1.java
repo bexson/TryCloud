@@ -1,30 +1,48 @@
 package com.trycloud.fatih.practice;
 
-import com.trycloud.tests.base.TestBaseBC;
-import org.openqa.selenium.By;
+import com.trycloud.fatih.pages.LoginPage;
+import com.trycloud.utilities.Driver;
+import com.trycloud.fatih.base.TestBaseDBM;
+import com.trycloud.utilities.WebDriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class US1 extends TestBaseBC {
+public class US1 extends TestBaseDBM {
 
-    @Test
+    @Test(priority = 1)
     public void loginValid(){
-        driver.get(url);
-        driver.findElement(By.id("user")).sendKeys(username1);
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.id("submit-form")).click();
-        Assert.assertEquals(driver.getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/dashboard/");
+
+        Driver.getDriver().get(url);
+
+
+        LoginPage login = new LoginPage();
+
+
+        login.userNameBox.sendKeys(username1);
+
+        login.passwordBox.sendKeys(password);
+
+        login.submitButton.click();
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),"http://qa.trycloud.net/index.php/apps/dashboard/");
+    }
+
+    @Test(priority = 2)
+    public void loginInvalid(){
+
+        LoginPage login = new LoginPage();
+
+        login.userNameBox.sendKeys(username1);
+
+        login.passwordBox.sendKeys(password+"a");
+
+        login.submitButton.click();
+
+        String actualMessage = login.errorMessage.getText();
+        Assert.assertEquals(actualMessage,"Wrong username or password.");
     }
 
     @Test
-    public void loginInvalid(){
-        driver.get(url);
-        driver.findElement(By.id("user")).sendKeys(username1);
-        driver.findElement(By.id("password")).sendKeys(password+"a");
-        driver.findElement(By.id("submit-form")).click();
-
-
-        String actualMessage = driver.findElement(By.className("wrongPasswordMsg")).getText();
-        Assert.assertEquals(actualMessage,"Wrong username or password.");
+    public void test(){
+        WebDriverFactory.sleep(3);
     }
 }
