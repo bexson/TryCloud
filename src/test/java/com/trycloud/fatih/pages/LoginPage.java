@@ -4,6 +4,7 @@ import com.trycloud.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage {
 
@@ -24,6 +25,12 @@ public class LoginPage {
 
     @FindBy(className = "wrongPasswordMsg")
     public WebElement errorMessage;
+
+    public void urlCheck(){
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        String expectedUrl = "http://qa.trycloud.net/index.php/apps/dashboard/";
+        Assert.assertEquals(actualUrl,expectedUrl);
+    }
 
 
 }

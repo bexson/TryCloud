@@ -1,136 +1,130 @@
 package com.trycloud.fatih.practice;
 
 import com.github.javafaker.Faker;
+import com.trycloud.fatih.base.TestBaseDBM;
+import com.trycloud.fatih.pages.ContactsPage;
+import com.trycloud.fatih.pages.HomePage;
+import com.trycloud.fatih.pages.LoginPage;
 import com.trycloud.fatih.utilities.U;
-import com.trycloud.tests.base.TestBaseBM;
-import org.openqa.selenium.By;
+import com.trycloud.utilities.Driver;
+import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
-public class US5 extends TestBaseBM {
+public class US5 extends TestBaseDBM {
     private String contactsModuleXpath = "//a[@aria-label='Contacts']";
-    private boolean represent = true;
-    private int time = 3;
+    private boolean represent = false;
+    private int time = 1;
 
     @BeforeMethod
     public void loginValid(){
-        driver.get("http://qa3.trycloud.net");
-        driver.findElement(By.id("user")).sendKeys(username1);
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.id("submit-form")).click();
-        Assert.assertEquals(driver.getCurrentUrl(),"http://qa3.trycloud.net/index.php/apps/dashboard/");
+        LoginPage loginPage = new LoginPage();
+
+        Driver.getDriver().get(url);
+
+        loginPage.userNameBox.sendKeys(username1);
+
+        loginPage.passwordBox.sendKeys(password);
+
+        loginPage.submitButton.click();
+
+        loginPage.urlCheck();
 
     }
 
     @Test
     public void accessContactsTC1(){
-        //Click talks module
-        driver.findElement(By.xpath(contactsModuleXpath)).click();
-        //Assert title
-        Assert.assertTrue(driver.getTitle().contains("Contacts"));
+        HomePage homePage = new HomePage();
 
+        homePage.contactsModule.click();
+
+        String expectedName = "Contacts";
+
+        String actualTitle = Driver.getDriver().getTitle();
+
+        Assert.assertTrue(actualTitle.contains(expectedName));
     }
 
-    @Test
+    @Test(invocationCount = 5)
     public void addContactTC2(){
-        //TODO: Fill some other details of the  form
         Faker faker = new Faker();
-        //It is declared here because it will be used to check if contact is added to list
+        //This is to make the check at the end
         String contactName = faker.name().fullName();
-        //Click talks module
-        driver.findElement(By.xpath(contactsModuleXpath)).click();
-        U.representation(represent,time);
-        //Click new contact button
-        driver.findElement(By.id("new-contact-button")).click();
+        //TODO:Check if there is a better way to achieve this, and understand the problem
+        new HomePage().contactsModule.click();
         U.representation(represent,time);
 
+        ContactsPage contactsPage = new ContactsPage();
+        WebDriverFactory.sleep(2);
 
-        //Detect input boxes from the form and put fake values
-        //Name
-        WebElement name = driver.findElement(By.id("contact-fullname"));
-        name.clear(); //clear default text from contact title
-        name.sendKeys(contactName);
+        contactsPage.newContactButton.click();
         U.representation(represent,time);
+        WebDriverFactory.sleep(2);
+
+        contactsPage.inputContactName.clear();
+        contactsPage.inputContactName.sendKeys(contactName);
+        U.representation(represent,time);
+        WebDriverFactory.sleep(2);
+
         //Phone
-        WebElement phone = driver.findElement(By.xpath("//input[@inputmode='tel']"));
-        phone.sendKeys(faker.phoneNumber().cellPhone());
+        contactsPage.inputContactPhone.sendKeys(faker.phoneNumber().cellPhone());
         U.representation(represent,time);
+
         //Email
-        WebElement email = driver.findElement(By.xpath("//input[@inputmode='email']"));
-        email.sendKeys(faker.internet().emailAddress());
+        contactsPage.inputContactEmail.sendKeys(faker.internet().emailAddress());
         U.representation(represent,time);
+
         //Post office box
-        WebElement postOfficeBox = driver.findElement(By.xpath("//div[@prop-name='adr']/div[2]/input"));
-        postOfficeBox.sendKeys(faker.number().numberBetween(10,100) + "");
+        contactsPage.postOfficeBox.sendKeys(faker.number().numberBetween(10,100) + "");
         U.representation(represent,time);
+
         //Adress
-        WebElement adress = driver.findElement(By.xpath("//div[@prop-name='adr']/div[3]/input"));
-        adress.sendKeys(faker.address().streetAddress());
+        contactsPage.adress.sendKeys(faker.address().streetAddress());
         U.representation(represent,time);
+
         //Extended adress
-        WebElement extendedAdress = driver.findElement(By.xpath("//div[@prop-name='adr']/div[4]/input"));
-        extendedAdress.sendKeys(faker.address().fullAddress());
+        contactsPage.extendedAdress.sendKeys(faker.address().fullAddress());
         U.representation(represent,time);
+
         //Postalcode
-        WebElement postalCode = driver.findElement(By.xpath("//div[@prop-name='adr']/div[5]/input"));
-        postalCode.sendKeys(faker.address().zipCodeByState("NJ"));
+        contactsPage.postalCode.sendKeys(faker.address().zipCode());
         U.representation(represent,time);
+
         //City
-        WebElement city = driver.findElement(By.xpath("//div[@prop-name='adr']/div[6]/input"));
-        city.sendKeys(faker.address().cityName());
+        contactsPage.city.sendKeys(faker.address().cityName());
         U.representation(represent,time);
+
         //State
-        WebElement stateOrProvince = driver.findElement(By.xpath("//div[@prop-name='adr']/div[7]/input"));
-        stateOrProvince.sendKeys(faker.address().state());
+        contactsPage.stateOrProvince.sendKeys(faker.address().state());
         U.representation(represent,time);
+
         //Country
-        WebElement country = driver.findElement(By.xpath("//div[@prop-name='adr']/div[8]/input"));
-        country.sendKeys("USA");
+        contactsPage.country.sendKeys("USA");
         U.representation(represent,time);
 
 
 
-        //Get all contact names
-        List<WebElement> contactList = driver.findElements(By.xpath("//div[@class='app-content-list-item-line-one']"));
         boolean flag = false;
-        //check if newly added contact is on the contact list
-        for(WebElement element : contactList){
-            System.out.println(element.getText());
+
+        for(WebElement element : contactsPage.contactList){
             if(element.getText().equals(contactName)){
-                flag = true;
-            }
-        }
-        Assert.assertTrue(flag);
-    }
+                flag = true; } }
+
+
+
+        Assert.assertTrue(flag); }
 
     @Test
     public void allContactNamesTC3(){
-        //TODO: Figure out what to assert in this test case
-        driver.findElement(By.xpath(contactsModuleXpath)).click();
+        HomePage homePage = new HomePage();
+
+        homePage.contactsModule.click();
         U.representation(represent,time);
-        List<WebElement> contactList = driver.findElements(By.xpath("//div[@class='app-content-list-item-line-one']"));
-        for(WebElement element : contactList){
+
+        ContactsPage contactsPage = new ContactsPage();
+
+        for(WebElement element : contactsPage.contactList){
             System.out.println(element.getText());
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-}
+        } } }

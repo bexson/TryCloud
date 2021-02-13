@@ -19,4 +19,7 @@ public class HomePage {
 
     @FindBy(xpath = "//ul[@id='appmenu']/li[2]")
     public WebElement filesModule;
+
+    @FindBy(xpath = "//a[@aria-label='Contacts']")
+    public WebElement contactsModule;
 }

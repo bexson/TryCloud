@@ -22,7 +22,9 @@ public class US2 extends TestBaseDBM {
         LoginPage login = new LoginPage();
 
         login.userNameBox.sendKeys(username1);
+
         login.passwordBox.sendKeys(password);
+
         login.submitButton.click();
 
         String actualURL= Driver.getDriver().getCurrentUrl();
@@ -39,9 +41,10 @@ public class US2 extends TestBaseDBM {
 
         HomePage homePage = new HomePage();
 
-
         List<String> expectedModules = new ArrayList<>(Arrays.asList("Files","Photos","Activity","Talk","Contacts","Calendar"));
+
         List<String> actualModules = new ArrayList<>();
+
         for(WebElement element : homePage.moduleNames){
             actualModules.add(element.getAttribute("innerText"));
         }

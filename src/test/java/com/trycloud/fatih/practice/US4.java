@@ -1,6 +1,7 @@
 package com.trycloud.fatih.practice;
 
 import com.github.javafaker.Faker;
+import com.trycloud.fatih.pages.LoginPage;
 import com.trycloud.tests.base.TestBaseBM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,7 @@ public class US4 extends TestBaseBM {
 
     @BeforeMethod
     public void loginValid(){
+        LoginPage loginPage = new LoginPage();
         driver.get("http://qa3.trycloud.net");
         driver.findElement(By.id("user")).sendKeys(username1);
         driver.findElement(By.id("password")).sendKeys(password);
